@@ -42,7 +42,7 @@ function scrollTo(setProp) {
             timeRate = Math.round(Math.abs($(window).scrollTop() - anchor) / screen.availHeight);
         if (screen.availHeight * 0.75 < Math.abs($(window).scrollTop() - anchor)) {
             if (setProp.preloader && $('html').find('#' + setProp.preloaderId).length !== 0 && timeRate > 2) {
-                $('#' + setProp.preloaderId).fadeIn('normal').delay(setProp.scrollDelay * 2 + 300).fadeOut('slow');
+                $('#' + setProp.preloaderId).fadeIn('normal').delay(setProp.scrollDelay * 2).fadeOut('slow');
                 $('html, body').stop();
                 setTimeout(() => $('html, body').animate({
                     scrollTop: anchor
