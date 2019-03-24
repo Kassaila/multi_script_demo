@@ -1,0 +1,165 @@
+/* reset default brouser styles */
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+body,
+main,
+header,
+section,
+footer,
+form,
+label,
+input,
+select,
+option,
+button,
+p,
+div,
+a,
+ul,
+li,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+input,
+button {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* "preloader" (required)*/
+#preloader {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    background-color: rgb(236, 226, 167);
+    z-index: 100;
+}
+
+/* All styles for example (not required) */
+html {
+    font-family: 'Arial', san-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #fff;
+}
+
+/* "on_top_button", nav item */
+.nav_bar {
+    position: fixed;
+    top: 50%;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+}
+
+.on_top_button {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    font-size: 60px;
+    line-height: 60px;
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+.page_top .on_top_button {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* decor */
+a {
+    display: block;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: #000;
+}
+
+nav a {
+    font-size: 60px;
+    line-height: 60px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+
+section div {
+    display: flex;
+}
+
+section p {
+    font-size: 100px;
+    line-height: 120px;
+    font-weight: 900;
+}
+
+section a {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+section a:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+section span {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+#one {
+    background-color: rgb(190, 66, 66);
+}
+
+#two {
+    background-color: rgb(197, 80, 162);
+}
+
+#three {
+    background-color: rgb(99, 86, 216);
+}
+
+#four {
+    background-color: rgb(95, 199, 202);
+}
+
+#five {
+    background-color: rgb(171, 241, 131);
+}

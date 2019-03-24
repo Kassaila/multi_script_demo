@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <main>
+        <!-- preloader -->
+        <figure id="preloader"></figure>
+        <!-- on top button -->
+        <a href="#one" class="on_top_button scroll_to" title="on top">^</a>
+        <!-- links scroll_to -->
+        <nav class="nav_bar">
+            <a href="#one">1</a>
+            <a href="#two">2</a>
+            <a href="#three">3</a>
+            <a href="#four">4</a>
+            <a href="#five">5</a>
+        </nav>
+        <!-- screens -->
+        <section id="one">
+            <p>1</p>
+            <span>links to other page anchor</span>
+            <div>
+                <a href="other.html#two">2</a>
+                <a href="other.html#three">3</a>
+                <a href="other.html#four">4</a>
+                <a href="other.html#five">5</a>
+            </div>
+        </section>
+        <section id="two">
+            <p>2</p>
+        </section>
+        <section id="three">
+            <p>3</p>
+        </section>
+        <section id="four">
+            <p>4</p>
+        </section>
+        <section id="five">
+            <p>5</p>
+        </section>
+    </main>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script>
+        // Example "preloader" | Пример "preloader"
+        preloader({
+            // ID preloader block (required) | ID блока preloader (обязателен)
+            preloaderId: 'preloader', // string
+            delay: 600 // number; default: 600
+        });
+        // Example "scrollTo" | Пример "scrollTo"
+        scrollTo({
+            scrollDelay: 600, // number; default: 600
+            anchorURL: true, // boolean; default: true
+            preloader: true, // boolean; default: false
+            // ID preloader block (required) if preloader: true
+            // ID блока preloader (обязателен) если preloader: true
+            preloaderId: 'preloader', // string;
+        });
+        // Examole "pagePosition" | Пример "pagePosition"
+        pagePosition({
+            initScrHeight: 0.75 // number; 0.1 <= range <= 1; default: 0.75
+        });
+    </script>
+</body>
+
+</html>
