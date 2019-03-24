@@ -1,2 +1,2 @@
-# multi_script_demo
+# Demonstration
 Complex demonstration of scripts
