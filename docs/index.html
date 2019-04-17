@@ -63,6 +63,10 @@
             // ID preloader block (required) if preloader: true
             // ID блока preloader (обязателен) если preloader: true
             preloaderId: 'preloader', // string;
+            // callback function | callback функция
+            scrollToCallback() {
+                console.log('scroll it'); // optional
+            }
         });
         // Examole "pagePosition" | Пример "pagePosition"
         pagePosition({
