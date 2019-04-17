@@ -63,7 +63,7 @@ function scrollTo(setProp) {
             let currentPageId = $(this).attr('href'),
                 timeToAnchor = scrollToAnchor(currentPageId);
             setTimeout(() => {
-                if (setProp.anchorURL === true) window.location.hash = otherPageId;
+                if (setProp.anchorURL === true) window.location.hash = currentPageId;
                 setProp.scrollToCallback();
             }, timeToAnchor);
         }
