@@ -20,10 +20,12 @@
             <a href="#four">4</a>
             <a href="#five">5</a>
         </nav>
+        <!-- page position -->
+        <div class="page_position"></div>
         <!-- screens -->
         <section id="one">
             <p>1</p>
-            <span>links to other page anchor</span>
+            <span>links to front page anchor</span>
             <div>
                 <a href="index.html#two">2</a>
                 <a href="index.html#three">3</a>
@@ -66,7 +68,21 @@
         });
         // Examole "pagePosition" | Пример "pagePosition"
         pagePosition({
-            initScrHeight: 0.75 // number; 0.1 <= range <= 1; default: 0.75
+            initScrHeight: 0.75, // number; 0.1 <= range <= 1; default: 0.75
+            // callback function call when position has change
+            //callback функция вызывается когда позиция изменена
+            topCallback() {
+                console.log('other page top'); //optional
+                $('.page_position').text('other page top');
+            },
+            middleCallback() {
+                console.log('other page middle'); //optional
+                $('.page_position').text('other page middle');
+            },
+            bottomCallback() {
+                console.log('other page bottom'); //optional
+                $('.page_position').text('other page bottom');
+            }
         });
     </script>
 </body>

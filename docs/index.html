@@ -20,6 +20,8 @@
             <a href="#four">4</a>
             <a href="#five">5</a>
         </nav>
+        <!-- page position -->
+        <div class="page_position"></div>
         <!-- screens -->
         <section id="one">
             <p>1</p>
@@ -65,12 +67,26 @@
             preloaderId: 'preloader', // string;
             // callback function | callback функция
             scrollToCallback() {
-                console.log('scroll it'); // optional
+                console.log('position is done'); // optional
             }
         });
         // Examole "pagePosition" | Пример "pagePosition"
         pagePosition({
-            initScrHeight: 0.75 // number; 0.1 <= range <= 1; default: 0.75
+            initScrHeight: 0.75, // number; 0.1 <= range <= 1; default: 0.75
+            // callback function call when position has change
+            //callback функция вызывается когда позиция изменена
+            topCallback() {
+                console.log('front page top'); //optional
+                $('.page_position').text('front page top');
+            },
+            middleCallback() {
+                console.log('front page middle'); //optional
+                $('.page_position').text('front page middle');
+            },
+            bottomCallback() {
+                console.log('front page bottom'); //optional
+                $('.page_position').text('front page bottom');
+            }
         });
     </script>
 </body>

@@ -1,4 +1,4 @@
-/* reset default brouser styles */
+/* reset default browser styles */
 * {
     box-sizing: border-box;
 }
@@ -94,7 +94,13 @@ html {
     opacity: 0;
     transform: scale(0);
 }
-
+/* page position */
+.page_position {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-style: italic;
+}
 /* decor */
 a {
     display: block;
