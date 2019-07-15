@@ -78,7 +78,7 @@ function scrollTo(setProp) {
         }
     });
     // other page scroll to anchor
-    otherPageId = window.location.hash;
+    let otherPageId = window.location.hash;
     if (otherPageId !== '') {
         window.location.hash = '';
         $(document).ready(() => {
