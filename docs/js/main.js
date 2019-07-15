@@ -48,8 +48,8 @@ function scrollTo(setProp) {
     //scroll to anchor
     let scrollToAnchor = (target) => {
         let anchor = $(target).offset().top,
-            timeRate = Math.round(Math.abs($(window).scrollTop() - anchor) / screen.availHeight);
-        if (screen.availHeight * 0.75 < Math.abs($(window).scrollTop() - anchor)) {
+            timeRate = Math.round(Math.abs($(window).scrollTop() - anchor) / $(window).height());
+        if ($(window).height() * 0.75 < Math.abs($(window).scrollTop() - anchor)) {
             if (setProp.preloader && $('html').find('#' + setProp.preloaderId).length !== 0 && timeRate > 2) {
                 $('#' + setProp.preloaderId).fadeIn('normal').delay(setProp.scrollDelay * 2).fadeOut('slow');
                 $('html, body').stop();
@@ -72,8 +72,8 @@ function scrollTo(setProp) {
             let currentPageId = $(this).attr('href'),
                 timeToAnchor = scrollToAnchor(currentPageId);
             setTimeout(() => {
-                if (setProp.anchorURL === true) window.location.hash = currentPageId;
-                if (setProp.scrollToCallback !== undefined) setProp.scrollToCallback();
+                if (setProp.anchorURL) window.location.hash = currentPageId;
+                if (setProp.afterScrollCallback) setProp.afterScrollCallback();
             }, timeToAnchor);
         }
     });
@@ -85,8 +85,8 @@ function scrollTo(setProp) {
             setTimeout(() => {
                 let timeToAnchor = scrollToAnchor(otherPageId);
                 setTimeout(() => {
-                    if (setProp.anchorURL === true) window.location.hash = otherPageId;
-                    if (setProp.scrollToCallback !== undefined) setProp.scrollToCallback();
+                    if (setProp.anchorURL) window.location.hash = otherPageId;
+                    if (setProp.afterScrollCallback) setProp.afterScrollCallback();
                 }, timeToAnchor);
             }, 1500);
         });
