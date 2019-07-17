@@ -62,8 +62,8 @@ ul {
 /* All styles for example (not required) */
 html {
     font-family: 'Arial', san-serif;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 24px;
     font-weight: 400;
     color: #fff;
 }
@@ -99,6 +99,18 @@ html {
     position: fixed;
     top: 20px;
     left: 20px;
+    font-size: 40px;
+    line-height: 60px;
+    font-style: italic;
+}
+/* scroll callback */
+.scroll_callback {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: none;
+    font-size: 40px;
+    line-height: 60px;
     font-style: italic;
 }
 /* decor */
@@ -114,7 +126,7 @@ a:hover {
 
 nav a {
     font-size: 60px;
-    line-height: 60px;
+    line-height: 80px;
 }
 
 section {
@@ -138,11 +150,11 @@ section p {
 
 section a {
     font-size: 40px;
-    line-height: 40px;
+    line-height: 60px;
 }
 
 section a:not(:last-of-type) {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 section span {

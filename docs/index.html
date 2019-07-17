@@ -20,6 +20,8 @@
             <a href="#four">4</a>
             <a href="#five">5</a>
         </nav>
+        <!-- scroll callback -->
+        <div class="scroll_callback">done!</div>
         <!-- page position -->
         <div class="page_position"></div>
         <!-- screens -->
@@ -60,31 +62,33 @@
         // Example "scrollTo" | Пример "scrollTo"
         scrollTo({
             scrollDelay: 600, // number; default: 600
+            otherPageStartScroll: 1000, // number; default: 1000
             anchorURL: true, // boolean; default: true
             preloader: true, // boolean; default: false
             // ID preloader block (required) if preloader: true
             // ID блока preloader (обязателен) если preloader: true
             preloaderId: 'preloader', // string;
             // callback function | callback функция
-            afterScrollCallback() {
-                console.log('position is done'); // optional
+            afterScrollCallback() { //optional
+                $('.scroll_callback').fadeIn('fast').delay(800).fadeOut('fast');
+                console.log('position is done');
             }
         });
-        // Examole "pagePosition" | Пример "pagePosition"
+        // Example "pagePosition" | Пример "pagePosition"
         pagePosition({
-            initScrHeight: 0.75, // number; 0.1 <= range <= 1; default: 0.75
-            // callback function call when position has change
-            //callback функция вызывается когда позиция изменена
-            topCallback() {
-                console.log('front page top'); //optional
+            scrTopHeight: 0.5, // number; 0.1 <= range <= 1; default: 0.75
+            scrBottomHeight: 0.5, // number; 0.1 <= range <= 1; default: 0.75
+            // callback function 
+            topCallback() { //optional
+                //console.log('front page top');
                 $('.page_position').text('front page top');
             },
-            middleCallback() {
-                console.log('front page middle'); //optional
+            middleCallback() { //optional
+                //console.log('front page middle');
                 $('.page_position').text('front page middle');
             },
-            bottomCallback() {
-                console.log('front page bottom'); //optional
+            bottomCallback() { //optional
+                //console.log('front page bottom');
                 $('.page_position').text('front page bottom');
             }
         });

@@ -20,6 +20,8 @@
             <a href="#four">4</a>
             <a href="#five">5</a>
         </nav>
+        <!-- scroll callback -->
+        <div class="scroll_callback">done!</div>
         <!-- page position -->
         <div class="page_position"></div>
         <!-- screens -->
@@ -58,28 +60,34 @@
             delay: 600 // number; default: 600
         });
         // Example "scrollTo" | Пример "scrollTo"
-        scrollTo({
-            scrollDelay: 600, // number; default: 600
-            anchorURL: true // boolean; default: true
-        });
-        // Examole "pagePosition" | Пример "pagePosition"
-        pagePosition({
-            initScrHeight: 0.75, // number; 0.1 <= range <= 1; default: 0.75
-            // callback function call when position has change
-            //callback функция вызывается когда позиция изменена
-            topCallback() {
-                console.log('other page top'); //optional
-                $('.page_position').text('other page top');
-            },
-            middleCallback() {
-                console.log('other page middle'); //optional
-                $('.page_position').text('other page middle');
-            },
-            bottomCallback() {
-                console.log('other page bottom'); //optional
-                $('.page_position').text('other page bottom');
-            }
-        });
+            scrollTo({
+                scrollDelay: 600, // number; default: 600
+                otherPageStartScroll: 1200, // number; default: 1000
+                anchorURL: true, // boolean; default: true
+                // callback function | callback функция
+                afterScrollCallback() { //optional
+                    $('.scroll_callback').fadeIn('fast').delay(800).fadeOut('fast');
+                    console.log('position is done');
+                }
+            });
+            // Example "pagePosition" | Пример "pagePosition"
+            pagePosition({
+                scrTopHeight: 0.5, // number; 0.1 <= range <= 1; default: 0.75
+                scrBottomHeight: 0.5, // number; 0.1 <= range <= 1; default: 0.75
+                // callback function 
+                topCallback() { //optional
+                    //console.log('front page top');
+                    $('.page_position').text('front page top');
+                },
+                middleCallback() { //optional
+                    //console.log('front page middle');
+                    $('.page_position').text('front page middle');
+                },
+                bottomCallback() { //optional
+                    //console.log('front page bottom');
+                    $('.page_position').text('front page bottom');
+                }
+            });
     </script>
 </body>
 
