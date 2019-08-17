@@ -6,7 +6,7 @@
 * preloader
 */
 function preloader(setProp) {
-    // Default options | Настройки по умолчанию
+    // default options
     setProp.delay = setProp.delay !== undefined && typeof setProp.delay === 'number' && setProp.delay >= 0 ? setProp.delay : 600;
     $(window).on('load', () => {
         $('#' + setProp.preloaderId).delay(setProp.delay).fadeOut('slow');
@@ -16,19 +16,19 @@ function preloader(setProp) {
 * page position
 */
 function pagePosition(setProp) {
-    // Default options | Настройки по умолчанию
+    // default options
     setProp.scrTopHeight = setProp.scrTopHeight !== undefined && typeof setProp.scrTopHeight === 'number' && setProp.scrTopHeight >= 0.1 && setProp.scrTopHeight <= 1 ? setProp.scrTopHeight : 0.1;
     setProp.scrBottomHeight = setProp.scrBottomHeight !== undefined && typeof setProp.scrBottomHeight === 'number' && setProp.scrBottomHeight >= 0.1 && setProp.scrBottomHeight <= 1 ? setProp.scrBottomHeight : 0.1;
     let scrollBottom = () => $(window).scrollTop() + $(window).height();
     // init page position (top, middle or bottom)
     let initPosition = () => {
         if ($(window).height() * setProp.scrTopHeight > $(window).scrollTop()) {
-            if ($('html')[0] != $('.page_top')[0]) {
+            if (!$('html').hasClass('page_top')) {
                 $('html').addClass('page_top').removeClass('page_middle page_bottom');
                 if (setProp.topCallback) setProp.topCallback();
             }
         } else if ($('html').height() - $(window).height() * setProp.scrBottomHeight < scrollBottom()) {
-            if ($('html')[0] != $('.page_bottom')[0]) {
+            if (!$('html').hasClass('page_bottom')) {
                 $('html').addClass('page_bottom').removeClass('page_top page_middle');
                 if (setProp.bottomCallback) setProp.bottomCallback();
             }
@@ -39,7 +39,7 @@ function pagePosition(setProp) {
             }
         }
     }
-    // init page position on events
+    // init on events
     $(document).ready(initPosition);
     $(window).scroll(initPosition);
     $(window).resize(initPosition);
@@ -48,7 +48,7 @@ function pagePosition(setProp) {
 * scroll to
 */
 function scrollTo(setProp) {
-    // Default options | Настройки по умолчанию
+    // default options
     setProp.scrollDelay = setProp.scrollDelay !== undefined && typeof setProp.scrollDelay === 'number' && setProp.scrollDelay >= 0 ? setProp.scrollDelay : 600;
     setProp.otherPageStartScroll = setProp.otherPageStartScroll !== undefined && typeof setProp.otherPageStartScroll === 'number' && setProp.otherPageStartScroll >= 0 ? setProp.otherPageStartScroll : 1000;
     setProp.anchorURL = setProp.anchorURL !== undefined && typeof setProp.anchorURL === 'boolean' ? setProp.anchorURL : true;
@@ -57,7 +57,7 @@ function scrollTo(setProp) {
     let scrollToAnchor = (target) => {
         let anchor = $(target).offset().top,
             timeRate = Math.round(Math.abs($(window).scrollTop() - anchor) / $(window).height());
-            timeRate = timeRate > 0 ? timeRate : 1;
+        timeRate = timeRate > 0 ? timeRate : 1;
         if ($(window).height() * 0.1 < Math.abs($(window).scrollTop() - anchor)) {
             if (setProp.preloader && $('html').find('#' + setProp.preloaderId).length > 0 && timeRate > 2) {
                 $('#' + setProp.preloaderId).fadeIn('normal').delay(setProp.scrollDelay * 2).fadeOut('slow');
@@ -73,7 +73,6 @@ function scrollTo(setProp) {
                 return setProp.scrollDelay * timeRate;
             }
         }
-        console.log(timeRate);
     }
     // current page scroll to anchor
     $('a').bind('click', function (event) {
@@ -88,17 +87,19 @@ function scrollTo(setProp) {
         }
     });
     // other page scroll to anchor
-    let otherPageId = window.location.hash;
-    if (otherPageId !== '') {
-        window.location.hash = '';
-        $(document).ready(() => {
-            setTimeout(() => {
-                let timeToAnchor = scrollToAnchor(otherPageId);
+    (() => {
+        let otherPageId = window.location.hash;
+        if (otherPageId !== '') {
+            window.location.hash = '';
+            $(document).ready(() => {
                 setTimeout(() => {
-                    if (setProp.anchorURL) window.location.hash = otherPageId;
-                    if (setProp.afterScrollCallback) setProp.afterScrollCallback();
-                }, timeToAnchor);
-            }, setProp.otherPageStartScroll);
-        });
-    }
+                    let timeToAnchor = scrollToAnchor(otherPageId);
+                    setTimeout(() => {
+                        if (setProp.anchorURL) window.location.hash = otherPageId;
+                        if (setProp.afterScrollCallback) setProp.afterScrollCallback();
+                    }, timeToAnchor);
+                }, setProp.otherPageStartScroll);
+            });
+        }
+    })();
 }
